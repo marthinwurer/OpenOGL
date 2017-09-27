@@ -1,0 +1,16 @@
+# my own
+.idea/
+*.iml
+*.swp
+out/
+*.class
+*.log
+
+# from github
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar

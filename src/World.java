@@ -105,6 +105,45 @@ public class World {
         return map[yy][xx];
     }
 
+    public Character getCurrentCharacter(){
+        return currchar.get();
+    }
+
+    /**
+     * Gets the next character in the initiative list for the given tile.
+     * @param xx
+     * @param yy
+     * @return The next character to move in the given tile. null if nonexistant.
+     */
+    public Character getHighestPriorityCharacter(int xx, int yy){
+        Character best = null;
+        int count = 0;
+        for( Character c : characters){
+            if( c.getX() == xx && c.getY() == yy){
+                count++;
+                if ( best == null || (currchar.get().initiativeCompare(c) >= 0 && c.initiativeCompare(best) > 0)){
+                    best = c;
+                }
+            }
+        }
+
+        return best;
+    }
+
+    public Pair<Character, Integer> getHighestPriorityCharacterAndCount(int xx, int yy){
+        Character best = null;
+        int count = 0;
+        for( Character c : characters){
+            if( c.getX() == xx && c.getY() == yy){
+                count++;
+                if ( best == null || (currchar.get().initiativeCompare(c) >= 0 && c.initiativeCompare(best) > 0)){
+                    best = c;
+                }
+            }
+        }
+
+        return new Pair<>(best, count);
+    }
 
 
 

@@ -112,7 +112,11 @@ public class Character {
     }
 
 
-
+    /**
+     *
+     * @param other
+     * @return the difference in inititive scores. Positive if the other character will act after this one.
+     */
     public int initiativeCompare(Character other){
         /*
             Characters act in order, counting down from highest result to lowest

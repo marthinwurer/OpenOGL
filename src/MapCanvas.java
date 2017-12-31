@@ -36,8 +36,33 @@ public class MapCanvas extends JPanel {
             for (int xx = 0; xx < data.getWidth(); xx++){
 
                 g.drawImage(data.getTile(xx, yy).getSprite(), xx * zoom, yy * zoom, zoom, zoom, null);
+
+                Pair<Character, Integer> c = data.getHighestPriorityCharacterAndCount(xx, yy);
+                if ( c.first != null){
+                    g.drawImage(Tile.DUDE.getSprite(), xx * zoom, yy * zoom, zoom, zoom, null);
+
+                    if( c.second > 1){
+                        // font stuff
+                        g.setColor(Color.YELLOW);
+                        g.setFont(new Font("Monospaced", Font.PLAIN, 12));
+
+                        // calculate the offset to fit in the top right corner
+                        FontMetrics fm = g.getFontMetrics();
+                        String msg = Integer.toString(c.second);
+                        int msgWidth = fm.stringWidth(msg);
+                        int msgAscent = fm.getAscent();
+                        int msgLeading = fm.getLeading();
+
+                        int x_spot = ((xx + 1) * zoom) - msgWidth;
+                        int y_spot = (yy * zoom) + msgAscent + msgLeading;
+
+                        g.drawString(msg, x_spot, y_spot);
+                    }
+                }
             }
         }
+
+        // draw a
     }
 
 

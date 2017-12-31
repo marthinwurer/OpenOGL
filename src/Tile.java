@@ -6,7 +6,8 @@ import static javax.imageio.ImageIO.read;
 
 public enum Tile {
 
-    FLOOR("FLOOR", "graphics/0000_floor_default.bmp");
+    FLOOR("FLOOR", "graphics/0000_floor_default.bmp"),
+    DUDE("DUDE", "graphics/dude.png");
 
     private final BufferedImage sprite;
     private final String name;

@@ -6,14 +6,19 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args){
         World world = new World();
+        Dice dice = new Dice();
         for( int ii = 0; ii < 19; ii++){
-            world.addCharacter(new Character("b" + ii,10, 10, 2, 2, 0, 10));
+            world.addCharacter(new Character("b" + ii,10, 10, 2, 2, 0, dice.roll(4,6,3)));
         }
         world.calcInitiatives();
         for( int ii = 0; ii < 19; ii++){
-            world.addCharacter(new Character("a" + ii,10, 10, 2, 2, 0, 10));
+            world.addCharacter(new Character("a" + ii,10, 10, 2, 2, 0, dice.roll(4,6,3)));
         }
         world.displayWorld();
+
+        MainFrame frame = new MainFrame(world);
+        frame.setVisible(true);
+        frame.repaint();
 
 //        Dice set = new Dice();
 //        int[] data = new int[19];

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by benjamin on 10/3/16.
@@ -16,13 +17,16 @@ public class World {
     private ArrayList<Character> characters; // a simple list of all characters in the world
 
     private InitiativeList currchar; // the list of characters in initiative order
-    private int[][] map;
+    private Tile[][] map;
 
     private boolean initCaclulated;
 
     public World(){
         characters = new ArrayList<>();
-        map = new int[10][10];
+        map = new Tile[10][10];
+        for (Tile[] aMap : map) {
+            Arrays.fill(aMap, Tile.FLOOR);
+        }
         currchar = new InitiativeList();
         initCaclulated = false;
     }
@@ -87,6 +91,18 @@ public class World {
         }
 
         System.out.print(outString);
+    }
+
+    public int getHeight(){
+        return map.length;
+    }
+
+    public int getWidth(){
+        return map[0].length;
+    }
+
+    public Tile getTile(int xx, int yy){
+        return map[yy][xx];
     }
 
 

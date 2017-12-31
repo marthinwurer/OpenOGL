@@ -22,10 +22,11 @@ public class MapCanvas extends JPanel {
 
     double cx = 0.0; // center x
     double cy = 0.0; // center y
-    double zoom = 64.0;
+    int zoom = 64;
 
     MapCanvas(World data){
         this.data = data;
+        this.setPreferredSize(new Dimension(data.getWidth() * zoom, data.getHeight() * zoom));
     }
 
     public void paintComponent(Graphics g){
@@ -34,8 +35,17 @@ public class MapCanvas extends JPanel {
         for(int yy = 0; yy < data.getHeight(); yy++){
             for (int xx = 0; xx < data.getWidth(); xx++){
 
-                g.drawImage(data.getTile(xx, yy).getSprite(), (int)(xx * zoom), (int)(yy * zoom), null);
+                g.drawImage(data.getTile(xx, yy).getSprite(), xx * zoom, yy * zoom, zoom, zoom, null);
             }
         }
+    }
+
+
+    public void zoomIn(){
+        zoom += 1;
+    }
+
+    public void zoomOut(){
+        zoom -= 1;
     }
 }

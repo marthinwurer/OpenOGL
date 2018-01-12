@@ -21,6 +21,9 @@ public class World {
 
     private boolean initCaclulated;
 
+    private int cursorX;
+    private int cursorY;
+
     public World(){
         characters = new ArrayList<>();
         map = new Tile[10][10];
@@ -29,6 +32,8 @@ public class World {
         }
         currchar = new InitiativeList();
         initCaclulated = false;
+        cursorX = 0;
+        cursorY = 0;
     }
 
     public World addCharacter(Character toAdd){
@@ -146,5 +151,19 @@ public class World {
     }
 
 
+    public int getCursorX() {
+        return cursorX;
+    }
 
+    public void setCursorX(int cursorX) {
+        this.cursorX = cursorX;
+    }
+
+    public int getCursorY() {
+        return cursorY;
+    }
+
+    public void setCursorY(int cursorY) {
+        this.cursorY = cursorY;
+    }
 }

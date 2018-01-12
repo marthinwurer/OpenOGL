@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +24,10 @@ public class MapCanvas extends JPanel {
 
     double cx = 0.0; // center x
     double cy = 0.0; // center y
-    int currentx = 2;
-    int currenty = 2;
+
+
+    private int currentx = 2;
+    private int currenty = 2;
     int zoom = 64;
 
     MapCanvas(World data){
@@ -71,7 +75,7 @@ public class MapCanvas extends JPanel {
 
         // draw a rectangle around the current square
         g.setColor(Color.YELLOW);
-        g.drawRect(currentx * zoom - 1, currenty * zoom - 1, zoom + 2, zoom + 2);
+        g.drawRect(data.getCursorX() * zoom - 1, data.getCursorY() * zoom - 1, zoom + 2, zoom + 2);
     }
 
 
@@ -82,4 +86,21 @@ public class MapCanvas extends JPanel {
     public void zoomOut(){
         zoom -= 1;
     }
+
+    public int getCurrentx() {
+        return currentx;
+    }
+
+    public void setCurrentx(int currentx) {
+        this.currentx = currentx;
+    }
+
+    public int getCurrenty() {
+        return currenty;
+    }
+
+    public void setCurrenty(int currenty) {
+        this.currenty = currenty;
+    }
+
 }

@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class MainFrame extends javax.swing.JFrame {
 
@@ -37,9 +39,38 @@ public class MainFrame extends javax.swing.JFrame {
         cp.add(map, BorderLayout.CENTER);
         cp.add(btnPanel, BorderLayout.SOUTH);
 
+
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent evt) {
+                int x = world.getCursorX();
+                int y = world.getCursorY();
+                switch(evt.getKeyCode()) {
+                    case KeyEvent.VK_LEFT:
+                        world.setCursorX(x - 1);
+                        repaint();
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        world.setCursorX(x + 1);
+                        repaint();
+                        break;
+                    case KeyEvent.VK_UP:
+                        world.setCursorY(y - 1);
+                        repaint();
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        world.setCursorY(y + 1);
+                        repaint();
+                        break;
+                }
+            }
+        });
+
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setTitle("OpenOGL");
         this.pack();
-        this.requestFocus();
+        this.setFocusable(true);
+        this.requestFocusInWindow();
     }
 
 

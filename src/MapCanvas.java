@@ -22,6 +22,8 @@ public class MapCanvas extends JPanel {
 
     double cx = 0.0; // center x
     double cy = 0.0; // center y
+    int currentx = 2;
+    int currenty = 2;
     int zoom = 64;
 
     MapCanvas(World data){
@@ -62,7 +64,14 @@ public class MapCanvas extends JPanel {
             }
         }
 
-        // draw a
+        // draw a rectangle around the current character
+        Character currchar = data.getCurrentCharacter();
+        g.setColor(Color.GREEN);
+        g.drawRect(currchar.getX() * zoom, currchar.getY() * zoom, zoom, zoom);
+
+        // draw a rectangle around the current square
+        g.setColor(Color.YELLOW);
+        g.drawRect(currentx * zoom - 1, currenty * zoom - 1, zoom + 2, zoom + 2);
     }
 
 
